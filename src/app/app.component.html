@@ -257,6 +257,25 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<br>
+<br>
 
 
-<router-outlet />
+
+
+<div *ngIf="data() as data; else loading">
+  <h2>Data:</h2>
+  <pre>{{ data | json }}</pre>
+</div>
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>
+
+<div *ngIf="errorMessage()">
+  <h2>Error:</h2>
+  <p>{{ errorMessage() }}</p>
+</div>
+<br>
+<!-- app.component.html -->
+<router-outlet></router-outlet>
